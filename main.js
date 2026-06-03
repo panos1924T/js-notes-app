@@ -1,8 +1,8 @@
 const daysGR = [`Κυριακή`, `Δευτέρα`, `Τρίτη`, `Τετάρτη`, `Πέμπτη`, `Παρασκευή`, `Σάββατο`]
 const monthsGR = [`Ιανουαρίου`, `Φεβρουαρίου`, `Μαρτίου`, `Απριλίου`, `Μαϊου`, `Ιουνίου`, `Ιουλίου`, `Αυγούστου`, `Σεπτεμβρίου`, `Οκτωβρίου`, `Νοεμβρίου`, `Δεκεμβρίου`]
 
-let notes = []
-let nextId = 1
+let notes = loadNotes()
+let nextId = notes.length > 0 ? Math.max(...notes.map(n => n.key)) + 1 : 1
 
 window.addEventListener(`DOMContentLoaded`, function(){
     const inputNote = document.querySelector(`#inputNote`)
@@ -52,6 +52,7 @@ function onInsertHandler(noteObj) {
 function insertNote(noteObj) {
     notes = [...notes, noteObj] //immutable insert/update
     nextId ++
+    saveNotes()
 }
 
 function renderNotes() {
@@ -62,11 +63,13 @@ function renderNotes() {
 
 function strikeThrough(key) {
     notes = notes.map(note => note.key === key ? {...note, softDeleted: !note.softDeleted} : note)
+    saveNotes()
     renderNotes()
 }
 
 function deleteNote(key) {
     notes = notes.filter(noteObj => noteObj.key !== key) // immutable delete
+    saveNotes()
     renderNotes()
 }
 
@@ -97,4 +100,13 @@ function createNoteElement(noteObj) {
     div.appendChild(deleteBtn)
 
     return div
+}
+
+function loadNotes() {
+    const saved = localStorage.getItem("notes")
+    return saved ? JSON.parse(saved) : []
+}
+
+function saveNotes() {
+    localStorage.setItem("notes", JSON.stringify(notes))
 }
