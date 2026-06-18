@@ -7,27 +7,26 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="./main.js"></script>
 </head>
-<body>
+<body style="background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920'); background-size: cover; background-position: center; background-attachment: fixed;">
 
-    <div class="w-[300px] h-[510px] my-5 mx-auto border-2 border-black rounded-[5px]">
+    <div class="w-[550px] h-[700px] my-20 mx-auto border-2 border-black rounded-[5px] bg-white/90 backdrop-blur-sm">
 
         <header>
             <div class="flex justify-center items-center">
-
                 <span id="datetxt" class="w-full text-center h-[50px] border-b border-black text-[rgb(180,10,10)] text-[1rem]">PanTs</span>
-
             </div>
         </header>
 
         <main>
-            <div id="notesWrapper" class="h-[400px] border-b border-black overflow-auto">
+            <div id="notesWrapper" class="h-[580px] border-b border-black overflow-auto">
+                
             </div>
         </main>
 
         <footer>
-            <div class="flex justify-around items-center h-[47px]">
-                <input type="text" id="inputNote" class="w-[200px] h-[40px] pl-[5px] border border-black" placeholder="Insert note">
-                <button type="button" id="addNoteBtn" class="w-[40px] h-[40px] border rounded-full">+</button>
+            <div class="flex justify-around items-center h-[65px]">
+                <input type="text" id="inputNote" class="w-[400px] h-[40px] pl-[10px] border border-black" placeholder="Insert note">
+                <button type="button" id="addNoteBtn" class="w-[50px] h-[40px] border rounded-full">+</button>
             </div>
         </footer>
 

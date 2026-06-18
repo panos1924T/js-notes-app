@@ -76,7 +76,7 @@ function deleteNote(key) {
 function createNoteElement(noteObj) {
     const div = document.createElement(`div`)
     div.id = `noteTemplate` + noteObj.key
-    div.className = `flex justify-between items-center px-[2px] border-b border-black`
+    div.className = `flex justify-between items-center px-[2px] border-b mx-[10px] border-black`
 
     const checkbox = document.createElement(`input`)
     checkbox.id = `checkbox` + noteObj.key
@@ -87,7 +87,7 @@ function createNoteElement(noteObj) {
     const label = document.createElement(`label`)
     label.htmlFor = checkbox.id
     label.textContent = noteObj.note
-    label.className = `w-[200px] max-h-[100px] overflow-hidden break-words whitespace-normal text-base ${noteObj.softDeleted ? `line-through text-gray-500` : ``}`
+    label.className = `flex-1 max-h-[100px] overflow-y-auto break-words whitespace-normal m-[10px] text-base ${noteObj.softDeleted ? `line-through text-gray-500` : ``}`
 
     const deleteBtn = document.createElement(`button`)
     deleteBtn.id = `deleteBtn` + noteObj.key
