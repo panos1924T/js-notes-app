@@ -91,6 +91,9 @@ function createNoteElement(noteObj) {
     if (editingKey === noteObj.key) {
         // --- EDIT MODE ---
         const input = document.createElement(`input`)
+        input.addEventListener(`keyup`, (e) => {
+            if (e.key === `Enter`) updateNote(noteObj.key, input.value)
+            })
         input.type = `text`
         input.value = noteObj.note
         input.className = `flex-1 m-[10px] border border-black px-[5px] text-base`
