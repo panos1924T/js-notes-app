@@ -90,13 +90,14 @@ function createNoteElement(noteObj) {
 
     if (editingKey === noteObj.key) {
         // --- EDIT MODE ---
-        const input = document.createElement(`input`)
+        const input = document.createElement(`textarea`)
         input.addEventListener(`keyup`, (e) => {
             if (e.key === `Enter`) updateNote(noteObj.key, input.value)
             })
-        input.type = `text`
+        input.type = `textarea`
         input.value = noteObj.note
-        input.className = `flex-1 m-[10px] border border-black px-[5px] text-base`
+        input.value = noteObj.note
+        input.className = `flex-1 max-h-[100px] overflow-y-auto break-words whitespace-normal m-[10px] border border-black px-[5px] text-base resize-none`
 
         const saveBtn = document.createElement(`button`)
         saveBtn.textContent = `✓`
